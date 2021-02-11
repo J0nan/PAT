@@ -19,3 +19,17 @@ p.titulo-inicio{
   padding-top: 1.75em;
   font-size: 1.75ex;
 }
+
+a.list-group-item.list-group-item-action{
+  color:black;
+}
+
+a.list-group-item.list-group-item-action:hover{
+  background-color:#0d6efd;
+  color:white;
+}
+
+a.list-group-item.list-group-item-action:active{
+  background-color:#adb5bd;
+  color:black;
+}
