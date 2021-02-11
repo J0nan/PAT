@@ -12,12 +12,33 @@ img.logo-inicio{
   margin-bottom: 2%;
 }
 
+img.logo-nav{
+  width: 64px;
+  margin-left: 6px;
+  margin-top: 0px;
+  margin-right: 4px;
+}
+
 p.titulo-inicio{
   /* font: 1em system-ui; */
   margin-top: 0em;
   line-height: 1em;
   padding-top: 1.75em;
   font-size: 1.75ex;
+}
+
+.titulo-nav{
+  margin-left: 20px;
+  padding-top: 0.5em;
+  color: black;
+}
+
+.navbar{
+  background-color: #adb5bd6e;
+}
+
+.titulo-nav:hover{
+  color: grey;
 }
 
 a.list-group-item.list-group-item-action{
@@ -32,4 +53,9 @@ a.list-group-item.list-group-item-action:hover{
 a.list-group-item.list-group-item-action:active{
   background-color:#adb5bd;
   color:black;
+}
+
+div.titulo-opcion{
+  text-align: center;
+  margin-top: 2%;
 }
