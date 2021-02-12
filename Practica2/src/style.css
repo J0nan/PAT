@@ -50,6 +50,10 @@ a.list-group-item.list-group-item-action:hover{
   color:white;
 }
 
+a.btn:hover{
+  background-color: darkblue;
+}
+
 a.list-group-item.list-group-item-action:active{
   background-color:#adb5bd;
   color:black;
@@ -78,4 +82,36 @@ div.titulo-opcion{
 table.tabla-pasos{
   text-align: center;
   width: 65%;
+}
+
+table.tabla-video{
+  width: 80%;
+}
+
+.btn.btn-si{
+  background-color: #20c997;
+  border-color: #20c997;
+}
+
+.btn.btn-si:hover{
+  background-color: #007451;
+}
+
+.btn-no{
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn.btn-no:hover{
+  background-color: #9b0000;
+}
+
+div.menu-principal{
+  margin-top: 15%;
+}
+
+video{
+  margin-right: 10px;
 }
