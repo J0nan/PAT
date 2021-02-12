@@ -123,3 +123,13 @@ iframe.collaborate{
   padding: 0px;
   display: block;
 }
+
+a.link-web {
+  color: rgb(0, 0, 0);
+  text-decoration-line: none;
+}
+
+a.link-web:hover{
+  color: blue;
+  text-decoration-line: underline;
+}
