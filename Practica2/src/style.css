@@ -84,6 +84,13 @@ div.titulo-opcion{
   padding-right: 15px;
 }
 
+.imagen-botonON{
+  max-width: 200px;
+  min-width: 100px;
+  width: 100%;
+  /* margin-right: 5%; */
+}
+
 .texto-mando{
   font-size: 1.5em;
 }
