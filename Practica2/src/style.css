@@ -70,6 +70,20 @@ div.titulo-opcion{
   /* margin-right: 5%; */
 }
 
+.imagen-regleta{
+  width: 100%;
+  max-width: 400px;
+  min-width: 150px;
+  /* margin-right: 5%; */
+}
+
+.imagen-microfono{
+  width: 100%;
+  max-width: 400px;
+  min-width: 200px;
+  padding-right: 15px;
+}
+
 .texto-mando{
   font-size: 1.5em;
 }

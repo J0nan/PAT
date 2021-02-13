@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cámara</title>
+        <title>Micrófono</title>
         <meta charset="utf-8">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -17,29 +17,41 @@
             </div>
         </nav>
         <div class="titulo-opcion">
-            <h1>Cámara</h1>
+            <h1>Collaborate</h1>
             <p class="lead">Estos pasos le ayudarán a realizar unas simples pruebas para intentar solventar los problemas:</p>
         </div>
 
         <table class="center tabla-pasos">
             <tr>
                 <th>
-                    <img src="../res/camara/mando-movimiento-camara.png" class="img-fluid imagen-mando">
+                    <img src="../res/microfono/microfono.png" class="img-fluid imagen-microfono">
                 </th>
                 <th colspan="2">
-                    <span class="align-middle texto-mando">2.- Mueva la cámara con las flechas</span>
+                    <span class="align-middle texto-mando">2.- Espere a que la luz verde del micrófono se encienda y espere 40 segundos</span>
                 </th>
                 <th class="align-bottom">
-                    <a href="camaraYmicrofono-3.html" type="button" class="btn btn-primary btn-lg btn-si"><b>SI</b> se movió la cámara</a>
-                </th>
-            </tr>
-            <tr>
-                <th colspan="3"></th>
-                <th class="align-bottom">
-                    <a href="camara-2.1bis.html" type="button" class="btn btn-primary btn-lg btn-no"><b>NO</b> se movió la cámara</a>
+                    <a href="" type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Siguiente paso</a>
                 </th>
             </tr>
         </table>
+
+        <div class="modal" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">¿A esperado 40 segundos desde que se encendió el LED verde?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Tras encenderse el LED, debe esperar 40 segundos antes de proseguir.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" type="button" class="btn btn-primary btn-no"><b>NO</b></a>
+                  <a href="camaraYmicrofono-3.html" type="button" class="btn btn-primary btn-si"><b>SI</b></a>
+                </div>
+              </div>
+            </div>
+          </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </html>
