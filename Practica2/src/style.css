@@ -61,7 +61,7 @@ a.list-group-item.list-group-item-action:active{
 
 div.titulo-opcion{
   text-align: center;
-  margin-top: 2%;
+  margin-top: 15px;
 }
 
 .imagen-mando{
@@ -137,7 +137,7 @@ video{
   margin-right: 10px;
 }
 
-iframe.collaborate{
+iframe.pantalla-completa{
   width: 100vw;
   height: 70vh;
   margin: 0px;
@@ -145,12 +145,37 @@ iframe.collaborate{
   display: block;
 }
 
-a.link-web {
-  color: rgb(0, 0, 0);
-  text-decoration-line: none;
-}
-
 a.link-web:hover{
   color: blue;
-  text-decoration-line: underline;
+  text-decoration-line: overline;
+}
+
+.accordion{
+  margin-top: 15px;
+}
+
+li.list-inline-item{
+  font-weight: lighter;
+}
+
+audio{
+  margin-top: 15px;
+}
+
+img.ampli{
+  width: 100%;
+  max-width: 400px;
+}
+
+img.imagen-interruptor{
+  width: 100%;
+  max-width: 500px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+video.netop{
+  width: 100%;
+  max-height: 70vh;
+  max-width: 800px;
 }
