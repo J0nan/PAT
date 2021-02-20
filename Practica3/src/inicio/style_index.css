@@ -26,7 +26,7 @@ a.list-group-item.list-group-item-action:active{
 }
 
 footer{
-    position: absolute;
+    position: fixed;
     bottom: 5px;
     margin-left: 5px;
     margin-right: auto;
