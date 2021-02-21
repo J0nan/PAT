@@ -17,7 +17,7 @@
             </div>
         </nav>
         <div class="titulo-instruccion">
-            <h1 id="titulo"><script>setTitulo(GetURLParameters('titulo'))</script></h1>
+            <h1 id="titulo"></h1>
             <p class="lead">Estos pasos le ayudarán a realizar unas simples pruebas para intentar solventar los problemas:</p>
         </div>
 
@@ -47,11 +47,14 @@
             }
         }
 
-        function setTitulo(titulo){
+        function setTitulo(texto){
             let header = document.getElementById("titulo");
-            header.innerHTML(titulo);
-            console.log(titulo)
+            header.innerHTML(texto);
+            console.log(texto);
+            console.log("titulo seted");
         }
+
     </script>
+    <script>setTitulo(GetURLParameters('titulo'))</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </html>
