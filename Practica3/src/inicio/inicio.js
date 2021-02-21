@@ -13,5 +13,10 @@ function cargar_apartados(ruta){
             lista.appendChild(a)
             console.log(fila)
         });
+    })
+    .catch(e => {
+        console.error("Error "+e);
+        console.warn("Probando con ruta completa al archivo");
+        cargar_apartados('https://j0nan.github.io/PAT/Practica3/res/contenido.txt')
     });
 }
