@@ -12,7 +12,7 @@
             <div class="container-fluid d-flex justify-content-start align-items-md-center">
                 <a class="navbar-brand nav-inicio" href="../index.html">
                     <img src="../res/Logos/logo-comillas.png" class="d-inline-block align-top logo-nav">
-                    <div class="fw-bold d-inline-block text-uppercase titulo-nav">Asistente informático de IBS</div>
+                    <div class="fw-bold d-inline-block text-uppercase titulo-nav">Asistente informático del IBS</div>
                 </a>
             </div>
         </nav>
@@ -27,7 +27,7 @@
                     <!-- <img src="../res/microfono/microfono.png" class="imagen-paso"> -->
                 </th>
                 <th colspan="2">
-                    <span class="align-middle texto-paso">1.- Seleccione la cámara 1 con el mando</span>
+                    <span id="texto-paso" class="align-middle texto-paso"></span>
                 </th>
                 <th class="align-bottom">
                     <a href="camara-2.html" type="button" class="btn btn-primary btn-lg">Siguiente paso</a>
@@ -56,16 +56,46 @@
             name_tab.innerHTML=titulo;
         }
 
-        function setImagen(){
-            html = "<img src=\"../res/"+titulo+"/"+paso+".png\" class=\"imagen-paso\">";
-            document.getElementById("imagen").innerHTML = html;
+        function defImagen(vertical){
+            html = "<img id = \"imagen-paso\" src=\"../res/"+titulo+"/"+paso+".png\" ";
+            if (vertical){
+                html += "class=\"imagen-paso-vertical\" alt=\" \">";
+            } else {
+                html += "class=\"imagen-paso-horizontal\" alt=\" \">";
+            }
+            document.getElementById("imagen").innerHTML = html
             console.log(html)
+        }
+
+        function setPaso(){
+            let instruccion = paso + ".- Esto es texto de prueba para ver si esta funcionando";
+            document.getElementById("texto-paso").innerHTML = instruccion;
+            console.log(instruccion)
+        }
+        
+        function setImagen(){
+            const img = new Image();
+            img.onload = function() {
+                console.log(this.width + 'x' + this.height);
+                if(this.height>this.width){
+                    console.log("vertical");
+                    defImagen(true);
+                }else{
+                    console.log("horizontal");
+                    defImagen(false);
+                }
+            }
+            img.src = "../res/"+titulo+"/"+paso+".png";
+
         }
 
     </script>
     <script>
         setTitulo();
         setImagen();
+    </script>
+    <script>
+        setPaso();
         console.log(titulo+" "+paso);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
