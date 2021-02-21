@@ -24,7 +24,7 @@
         <table class="center tabla-pasos">
             <tr>
                 <th id="imagen">
-                    <img src="../res/microfono/microfono.png" class="imagen-paso">
+                    <!-- <img src="../res/microfono/microfono.png" class="imagen-paso"> -->
                 </th>
                 <th colspan="2">
                     <span class="align-middle texto-paso">1.- Seleccione la cámara 1 con el mando</span>
@@ -57,9 +57,9 @@
         }
 
         function setImagen(){
-            let img = document.createElement("img");
-            img.setAttribute('class','imagen-paso');
-            img.setAttribute('scr','../res/'+titulo+'/'+paso+'.png')
+            html = "<img src=\"../res/"+titulo+"/"+paso+".png\" class=\"imagen-paso\">";
+            document.getElementById("imagen").innerHTML = html;
+            console.log(html)
         }
 
     </script>
