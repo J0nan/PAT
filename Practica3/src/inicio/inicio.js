@@ -6,7 +6,8 @@ function cargar_apartados(ruta){
             const filas = contenido.split('\n');
             filas.forEach(fila => {
                 let a = document.createElement("a");
-                a.setAttribute('href',encodeURI(`./src/instruccion.html?titulo=${fila}`));
+                fila = fila.replace(/[\r\n]+/gm, "" );
+                a.setAttribute('href',encodeURI(`./src/instruccion.html?titulo=${fila}&paso=1`));
                 a.setAttribute('class',"list-group-item list-group-item-action");
                 a.textContent = fila
                 lista.appendChild(a)
