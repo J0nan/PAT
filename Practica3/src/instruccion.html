@@ -70,22 +70,22 @@
         }
         
         function setVideo(){
+            fetch("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/"+paso+".mp4")
+            .then(response => {
+                if(!response.ok){
+                    throw response;
+                }
+            })
+            .catch(e => {
+                document.getElementById("video0").innerHTML=""
+                console.warn("No media detected")
+            });
             html = "<video id=\"video-paso\" width=\"450\" height=\"380\" controls muted autoplay>\n";
             html += "<source src=\"../res/"+titulo+"/"+paso+".mp4\" type=\"video/mp4\">\n";
             html += "</video>";
             vid =  document.getElementById("video0")
             vid.innerHTML = html
             console.log(html)
-            fetch("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/"+paso+".mp4")
-                .then(response => {
-                    if(!response.ok){
-                        throw response;
-                    }
-                })
-                .catch(e => {
-                    document.getElementById("video0").innerHTML=""
-                    console.warn("No media detected")
-                });
                 // vid.onerror = document.getElementById("video0").innerHTML=""
                     
         }
