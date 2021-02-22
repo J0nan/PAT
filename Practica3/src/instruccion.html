@@ -75,17 +75,13 @@
                 if(!response.ok){
                     throw response;
                 } else {
-                    
+                    html = "<video id=\"video-paso\" width=\"450\" height=\"380\" controls muted autoplay>\n";
+                    html += "<source src=\"../res/"+titulo+"/"+paso+".mp4\" type=\"video/mp4\">\n";
+                    html += "</video>";
+                    vid =  document.getElementById("video0")
+                    vid.innerHTML = html
+                    console.log(html)
                 }
-            })
-            .then(_=>{
-                html = "<video id=\"video-paso\" width=\"450\" height=\"380\" controls muted autoplay>\n";
-                html += "<source src=\"../res/"+titulo+"/"+paso+".mp4\" type=\"video/mp4\">\n";
-                html += "</video>";
-                vid =  document.getElementById("video0")
-                vid.innerHTML = html
-                console.log(html)
-
             })
             .catch(e => {
                 document.getElementById("video0").innerHTML=""
