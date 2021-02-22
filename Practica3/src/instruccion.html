@@ -23,7 +23,7 @@
 
         <table class="center tabla-pasos">
             <tr>
-                <th id="imagen">
+                <th id="multimedia">
                     <!-- <img src="../res/microfono/microfono.png" class="imagen-paso"> -->
                 </th>
                 <th colspan="2">
@@ -56,15 +56,24 @@
             name_tab.innerHTML=titulo;
         }
 
-        function defImagen(vertical){
+        function setImagen(vertical){
             html = "<img id = \"imagen-paso\" src=\"../res/"+titulo+"/"+paso+".png\" ";
             if (vertical){
                 html += "class=\"imagen-paso-vertical\" alt=\" \">";
             } else {
                 html += "class=\"imagen-paso-horizontal\" alt=\" \">";
             }
-            document.getElementById("imagen").innerHTML = html
+            document.getElementById("multimedia").innerHTML = html
             console.log(html)
+        }
+
+        function setVideo(){
+            html = "<video width=\"450\" height=\"380\" controls muted autoplay>\n";
+            html += "<source src=\"../res/"+titulo+"/"+paso+".mp4\" type=\"video/mp4\">\n";
+            html += "</video>";
+            document.getElementById("multimedia").innerHTML = html
+            console.log(html)
+
         }
 
         function setPaso(){
@@ -73,26 +82,33 @@
             console.log(instruccion)
         }
         
-        function setImagen(){
+        function setMultimedia(){
             const img = new Image();
             img.onload = function() {
                 console.log(this.width + 'x' + this.height);
                 if(this.height>this.width){
                     console.log("vertical");
-                    defImagen(true);
+                    setImagen(true);
                 }else{
                     console.log("horizontal");
-                    defImagen(false);
+                    setImagen(false);
                 }
             }
             img.src = "../res/"+titulo+"/"+paso+".png";
-
+            img.onerror = function(){
+                console.warn("Foto no encontrada, probando con video")
+                try {
+                    setVideo();
+                } catch (error) {
+                    console.warn("Multimedia no encontrada");
+                }
+            }
         }
 
     </script>
     <script>
         setTitulo();
-        setImagen();
+        setMultimedia();
     </script>
     <script>
         setPaso();
