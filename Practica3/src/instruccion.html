@@ -76,7 +76,25 @@
 
         }
 
+        function leerPasos(ruta){
+            fetch(ruta)
+            .then(response => response.text())
+            .then(contenido => {
+                pasos = contenido.split('\n');
+                pasos.forEach(linea => {
+                    linea = linea.replace(/[\r\n]+/gm, "" );
+                    console.log(linea)
+                });
+            })
+            .catch(e => {
+                console.error("Error Leyendo pasos "+e);
+                console.warn("Probando con ruta completa del archivo: https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt");
+                leerPasos(encodeURI("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt"))
+            });
+        }
+
         function setPaso(){
+            
             let instruccion = paso + ".- Esto es texto de prueba para ver si esta funcionando";
             document.getElementById("texto-paso").innerHTML = instruccion;
             console.log(instruccion)
@@ -111,6 +129,7 @@
         setMultimedia();
     </script>
     <script>
+        leerPasos("../res/"+titulo+"/pasos.txt");
         setPaso();
         console.log(titulo+" "+paso);
     </script>
