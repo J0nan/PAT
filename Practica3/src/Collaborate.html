@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body scroll="no" style="overflow: hidden">
+    <body>
         <nav class="navbar navbar-ligth">
             <div class="container-fluid d-flex justify-content-start align-items-md-center">
                 <a class="navbar-brand nav-inicio" href="../index.html">
@@ -20,17 +20,15 @@
             <h1>Collaborate</h1>
             <p class="lead">Últimas incidencias de Collaborate Europa:</p>
         </div>
-        <div class="container-fluid">
-            <table class="center scroll" style="width: 70%;">
-                <tr>
-                    <th>
-                        <div id="tabla-info">
+        <table class="center" style="width: 50%;">
+            <tr>
+                <th>
+                    <div id="tabla-info">
 
-                        </div>
-                    </th>
-                </tr>
-            </table>
-        </div>
+                    </div>
+                </th>
+            </tr>
+        </table>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
@@ -44,11 +42,22 @@
                 tabla = document.getElementById("tabla-info")
                 if(incidencia.name.includes("Collaborate Ultra - AWS (EU)")){
                     let div = document.createElement("div");
-                    div.setAttribute('class','card mb-3 container-fluid');
-                    let html =  "<div class=\"card-body\">"
-                    html += "<h5 class=\"card-title\">"+incidencia.name+"</h5>";
+                    if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="resolved"){
+                        div.setAttribute('class','card mb-3 bg-success');
+                    } else if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="identified"){
+                        div.setAttribute('class','card mb-3 bg-warning');
+                    } else if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="operational"){
+                        div.setAttribute('class','card mb-3 bg-primary');
+                    } else if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="investigating"){
+                        div.setAttribute('class','card mb-3 bg-danger');
+                    } else {
+                        div.setAttribute('class','card mb-3');
+                    }
+                    
+                    let html =  "<div class=\"card-body text-white\">"
+                    html += "<h4 class=\"card-title\">"+incidencia.name+" - "+incidencia.incident_updates[incidencia.incident_updates.length-1].status+"</h5>";
                     html += "<p class=\"card-text\">"+incidencia.incident_updates[incidencia.incident_updates.length-1].body+"</p>";
-                    html += "<p class=\"card-text\"><small class=\"text-muted\">"+incidencia.updated_at+"</small></p>";
+                    html += "<p class=\"card-text\"><small>"+incidencia.updated_at+"</small></p>";
                     html += "</div>";
                     div.innerHTML=html;
                     tabla.appendChild(div);
