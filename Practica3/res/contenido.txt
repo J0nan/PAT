@@ -1,4 +1,4 @@
 Cámara
-Microfono
+Micrófono
 Altavoz
 Collaborate
