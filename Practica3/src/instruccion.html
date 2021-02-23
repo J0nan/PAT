@@ -137,18 +137,18 @@
                 boton_next.setAttribute('class', 'btn btn-success btn-lg');
                 boton_next.innerHTML=texto[1];
                 if(destinos[0]=="FIN"){
-                    boton_next.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                    boton_next.setAttribute('href', "../src/"+pasos[pasos.length-1]+".html")
                 } else {
-                    boton_next.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
+                    boton_next.setAttribute('href', encodeURI(`../src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
                 }
                 document.getElementById("boton-next").appendChild(boton_next);
 
                 boton_no.setAttribute('class', 'btn btn-danger btn-lg');
                 boton_no.innerHTML=texto[2];
                 if(destinos[1]=="FIN"){
-                    boton_no.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                    boton_no.setAttribute('href', "../src/"+pasos[pasos.length-1]+".html")
                 } else {
-                    boton_no.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[1]}`))
+                    boton_no.setAttribute('href', encodeURI(`../src/instruccion.html?titulo=${titulo}&paso=${destinos[1]}`))
                 }
                 document.getElementById("boton-no").appendChild(boton_no);
             } else if(texto.length==2){
@@ -158,9 +158,9 @@
                 boton_next.setAttribute('class', 'btn btn-primary btn-lg');
                 boton_next.innerHTML=texto[1];
                 if(destinos[0]=="FIN"){
-                    boton_next.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                    boton_next.setAttribute('href', "../src/"+pasos[pasos.length-1]+".html")
                 } else {
-                    boton_next.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
+                    boton_next.setAttribute('href', encodeURI(`../src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
                 }
                 document.getElementById("boton-next").appendChild(boton_next);
             } else {
@@ -170,9 +170,9 @@
                 boton_next.setAttribute('class', 'btn btn-primary btn-lg');
                 boton_next.innerHTML="Siguente paso"
                 if(destinos[0]=="FIN"){
-                    boton_next.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                    boton_next.setAttribute('href', "../src/"+pasos[pasos.length-1]+".html")
                 } else {
-                    boton_next.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
+                    boton_next.setAttribute('href', encodeURI(`../src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
                 }
                 document.getElementById("boton-next").appendChild(boton_next);
             }
