@@ -1,4 +1,4 @@
-1.- Seleccione la cámara 1 con el mando=>2
+1.- Seleccione la cámara 1 con el mando;Next=>2
 2.- Mueva la cámara con las flechas;SI se movió la cámara;NO se movió la cámara=>3;2.1
 2.1.- Encienda la cámara y observe si se mueve;La cámara SI giró;La cámara NO giro=>3;2.2
 2.2.- Volvamos a probar una vez más. Seleccione la cámara 1 con el mando=>2.3
