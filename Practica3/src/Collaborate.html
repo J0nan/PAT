@@ -41,26 +41,29 @@
             incidencias.forEach(incidencia => {
                 tabla = document.getElementById("tabla-info")
                 if(incidencia.name.includes("Collaborate Ultra - AWS (EU)")){
-                    let div = document.createElement("div");
-                    if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="resolved"){
+                    let div = document.createElement("a");
+                    if(incidencia.incident_updates[0].status=="resolved"){
                         div.setAttribute('class','card mb-3 bg-success');
-                    } else if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="identified"){
+                    } else if(incidencia.incident_updates[0].status=="identified"){
                         div.setAttribute('class','card mb-3 bg-warning');
-                    } else if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="operational"){
+                    } else if(incidencia.incident_updates[0].status=="operational"){
                         div.setAttribute('class','card mb-3 bg-primary');
-                    } else if(incidencia.incident_updates[incidencia.incident_updates.length-1].status=="investigating"){
+                    } else if(incidencia.incident_updates[0].status=="investigating"){
                         div.setAttribute('class','card mb-3 bg-danger');
                     } else {
                         div.setAttribute('class','card mb-3');
                     }
+                    div.setAttribute('href',incidencia.shortlink);
+                    div.setAttribute('target','_blank')
                     
                     let html =  "<div class=\"card-body text-white\">"
-                    html += "<h4 class=\"card-title\">"+incidencia.name+" - "+incidencia.incident_updates[incidencia.incident_updates.length-1].status+"</h5>";
+                    html += "<h4 class=\"card-title\">"+incidencia.name+"</h5>";
                     html += "<p class=\"card-text\">"+incidencia.incident_updates[incidencia.incident_updates.length-1].body+"</p>";
-                    html += "<p class=\"card-text\"><small>"+incidencia.updated_at+"</small></p>";
+                    html += "<p class=\"card-text\"><small>"+"Estado: "+incidencia.incident_updates[0].status+"</small></p>";
                     html += "</div>";
                     div.innerHTML=html;
                     tabla.appendChild(div);
+                    console.log(incidencia.incident_updates.length);
                 }
                 // Collaborate Ultra - AWS (EU)
             });

@@ -63,3 +63,19 @@ a.btn-danger{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+p.card-text{
+    font-weight: normal;
+}
+
+a.card:hover{
+    filter: brightness(80%);
+}
+
+a.card{
+    text-decoration: none;
+}
+
+/* a.bg-warning{
+
+} */
