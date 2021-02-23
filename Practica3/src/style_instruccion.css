@@ -59,6 +59,7 @@ table.tabla-pasos{
     font-size: 1.5em;
 }
 
-a.btn:hover{
-    background-color: darkblue;
+a.btn-danger{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

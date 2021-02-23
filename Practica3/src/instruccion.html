@@ -25,21 +25,27 @@
             <tr>
                 <th id="multimedia">
                     <span id ="imagen"></span>
-                    <span id ="video0"></span>
+                    <span id ="video"></span>
                     <!-- <img src="../res/microfono/microfono.png" class="imagen-paso"> -->
                 </th>
                 <th colspan="2">
                     <span id="texto-paso" class="align-middle texto-paso"></span>
                 </th>
-                <th class="align-bottom">
-                    <a href="camara-2.html" type="button" class="btn btn-primary btn-lg">Siguiente paso</a>
+                <th id="boton-next" class="align-bottom">
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3"></th>
+                <th id="boton-no" class="align-bottom">
                 </th>
             </tr>
         </table>
     </body>
     <script>
         var titulo = GetURLParameters('titulo');
-        var paso = GetURLParameters('paso');
+        var num_paso_act = GetURLParameters('paso');
+        var pasos = [];
+        var num_pasos = [];
         function GetURLParameters(sParam){
             var sPageURL = decodeURIComponent(window.location.search.substring(1));
             var sURLVariables = sPageURL.split('&');
@@ -59,7 +65,7 @@
         }
 
         function setImagen(vertical){
-            html = "<img id = \"imagen-paso\" src=\"../res/"+titulo+"/"+paso+".png\" ";
+            html = "<img id = \"imagen-paso\" src=\"../res/"+titulo+"/"+num_paso_act+".png\" ";
             if (vertical){
                 html += "class=\"imagen-paso-vertical\" alt=\" \">";
             } else {
@@ -70,47 +76,109 @@
         }
         
         function setVideo(){
-            fetch("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/"+paso+".mp4")
+            fetch("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/"+num_paso_act+".mp4")
             .then(response => {
                 if(!response.ok){
                     throw response;
                 } else {
                     html = "<video id=\"video-paso\" width=\"450\" height=\"380\" controls muted autoplay>\n";
-                    html += "<source src=\"../res/"+titulo+"/"+paso+".mp4\" type=\"video/mp4\">\n";
+                    html += "<source src=\"../res/"+titulo+"/"+num_paso_act+".mp4\" type=\"video/mp4\">\n";
                     html += "</video>";
-                    vid =  document.getElementById("video0")
+                    vid =  document.getElementById("video")
                     vid.innerHTML = html
                     console.log(html)
                 }
             })
             .catch(e => {
-                document.getElementById("video0").innerHTML=""
+                document.getElementById("video").innerHTML=""
                 console.warn("No media detected")
             });
-                // vid.onerror = document.getElementById("video0").innerHTML=""
+                // vid.onerror = document.getElementById("video").innerHTML=""
                     
         }
 
-        function leerPasos(ruta){
+        function leerPasos(ruta, intentado=0){
             fetch(ruta)
             .then(response => response.text())
             .then(contenido => {
-                pasos = contenido.split('\n');
-                pasos.forEach(linea => {
+                lineas = contenido.split('\n');
+                let i = 0;
+                lineas.forEach(linea => {
                     linea = linea.replace(/[\r\n]+/gm, "" );
-                    console.log(linea)
+                    linea=linea.split(".- ");
+                    num_pasos[i]=linea[0];
+                    pasos[i]=linea[1];
+                    i++;
                 });
+                console.log(num_pasos)
+                console.log(pasos)
+                setPaso();
             })
             .catch(e => {
                 console.error("Error Leyendo pasos "+e);
-                console.warn("Probando con ruta completa del archivo: https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt");
-                leerPasos(encodeURI("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt"))
+                if(intentado == 0){
+                    console.warn("Probando con ruta completa del archivo txt: https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt");
+                    leerPasos(encodeURI("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt"),1)
+                }
             });
         }
 
         function setPaso(){
-            
-            let instruccion = paso + ".- Esto es texto de prueba para ver si esta funcionando";
+            let pos = num_pasos.findIndex(element => element==num_paso_act);
+            let query = pasos[pos].split("=>");
+            let texto = query[0].split(";");
+            let texto_paso;
+            let boton_next = document.createElement("a");
+            let boton_no = document.createElement("a");
+            if(texto.length==3){
+                texto_paso=texto[0];
+                destinos=query[1].split(";");
+
+                boton_next.setAttribute('class', 'btn btn-success btn-lg');
+                boton_next.innerHTML=texto[1];
+                if(destinos[0]=="FIN"){
+                    boton_next.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                } else {
+                    boton_next.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
+                }
+                document.getElementById("boton-next").appendChild(boton_next);
+
+                boton_no.setAttribute('class', 'btn btn-danger btn-lg');
+                boton_no.innerHTML=texto[2];
+                if(destinos[1]=="FIN"){
+                    boton_no.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                } else {
+                    boton_no.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[1]}`))
+                }
+                document.getElementById("boton-no").appendChild(boton_no);
+            } else if(texto.length==2){
+                texto_paso=texto[0];
+                destinos=query[1].split(";");
+
+                boton_next.setAttribute('class', 'btn btn-primary btn-lg');
+                boton_next.innerHTML=texto[1];
+                if(destinos[0]=="FIN"){
+                    boton_next.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                } else {
+                    boton_next.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
+                }
+                document.getElementById("boton-next").appendChild(boton_next);
+            } else {
+                texto_paso=texto;
+                destinos=query[1].split(";");
+
+                boton_next.setAttribute('class', 'btn btn-primary btn-lg');
+                boton_next.innerHTML="Siguente paso"
+                if(destinos[0]=="FIN"){
+                    boton_next.setAttribute('href', "./src/"+pasos[pasos.length-1]+".html")
+                } else {
+                    boton_next.setAttribute('href', encodeURI(`./src/instruccion.html?titulo=${titulo}&paso=${destinos[0]}`))
+                }
+                document.getElementById("boton-next").appendChild(boton_next);
+            }
+
+
+            let instruccion = num_paso_act + ".- "+texto_paso;
             document.getElementById("texto-paso").innerHTML = instruccion;
             console.log(instruccion)
         }
@@ -127,7 +195,7 @@
                     setImagen(false);
                 }
             }
-            img.src = "../res/"+titulo+"/"+paso+".png";
+            img.src = "../res/"+titulo+"/"+num_paso_act+".png";
             img.onerror = function(){
                 document.getElementById("imagen").innerHTML = ""
                 console.warn("Foto no encontrada, probando con video")
@@ -142,8 +210,7 @@
     </script>
     <script>
         leerPasos("../res/"+titulo+"/pasos.txt");
-        setPaso();
-        console.log(titulo+" "+paso);
+        console.log(titulo+" "+num_paso_act);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </html>
