@@ -20,22 +20,17 @@
             <h1>Collaborate</h1>
             <p class="lead">Últimas incidencias de Collaborate Europa:</p>
         </div>
-        <table class="center" style="width: 70%;"></table>
-        <tr>
-            <th id="tabla"></th>
-        </tr>
+        <table class="center scroll" style="width: 70%;">
+            <tr>
+                <th id>
+                    <div id="tabla-info" style="overflow-y:scroll">
+
+                    </div>
+                </th>
+            </tr>
+        </table>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script>
-        
-        // <div class="card">
-        //     <div class="card-body">
-        //         <h5 class="card-title">Card title</h5>
-        //         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        //         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        //     </div>
-        // </div>
-    </script>
     <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
     <script>
       var sp = new StatusPage.page({ page : '19x8w5vjjtd5' });
@@ -44,8 +39,18 @@
             console.log(data)
             incidencias=data.incidents;
             incidencias.forEach(incidencia => {
-                if(incidencia.name.includes("Collaborate Ultra - AWS (EU)"))
-                    
+                tabla = document.getElementById("tabla-info")
+                if(incidencia.name.includes("Collaborate Ultra - AWS (EU)")){
+                    let div = document.createElement("div");
+                    div.setAttribute('class','card mb-3');
+                    let html =  "<div class=\"card-body\">"
+                    html += "<h5 class=\"card-title\">"+incidencia.name+"</h5>";
+                    html += "<p class=\"card-text\">"+incidencia.incident_updates[incidencia.incident_updates.length-1].body+"</p>";
+                    html += "<p class=\"card-text\"><small class=\"text-muted\">"+incidencia.updated_at+"</small></p>";
+                    html += "</div>";
+                    div.innerHTML=html;
+                    tabla.appendChild(div);
+                }
                 // Collaborate Ultra - AWS (EU)
             });
         }
