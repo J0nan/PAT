@@ -97,5 +97,5 @@ FIN.- String
 Donde `FIN` no se modifica, ya que indica el último paso y `String` indica el nombre del html al que redigirá el botón pertinente. Dicho html se derá encontrar en la carpeta `src` .
 
 ### Aclaraciones:
-1. Cada paso soporta o un `.png` o un `.mp4` dichos archivos se cargarán automaticamente si se encuentran dentro de la carpeta `rsc` y a su vez dentro de la carpeta de la opcion donde se desea mostar. El nombre de dicha multimedia, deberá ser tal cual el número de paso en el que se desea mostar, alguos ejemplos son: `2.mp4` , `1.5.png` , `paso1.png`.
+1. Cada paso soporta o un `.png` o un `.mp4` dichos archivos se cargarán automaticamente si se encuentran dentro de la carpeta `res` y a su vez dentro de la carpeta de la opcion donde se desea mostar. El nombre de dicha multimedia, deberá ser tal cual el número de paso en el que se desea mostar, alguos ejemplos son: `2.mp4` , `1.5.png` , `paso1.png`.
 2. Si se desea cambiar la ejecución por defecto de alguna de las opciones, habrá que cambiar `incio.js` , que se encuentra en `src/inicio` , para que cuando carga la opción, le asigne de forma correcta la redirección al html deseado.
