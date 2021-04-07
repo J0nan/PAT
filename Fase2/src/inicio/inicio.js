@@ -21,6 +21,6 @@ function cargar_apartados(ruta){
     .catch(e => {
         console.error("Error "+e);
         console.warn("Probando con ruta completa al archivo de contenido: https://j0nan.github.io/PAT/Practica3/res/contenido.txt");
-        cargar_apartados('https://j0nan.github.io/PAT/Practica3/res/contenido.txt')
+        cargar_apartados('https://j0nan.github.io/PAT/Fase2/res/contenido.txt')
     });
 }

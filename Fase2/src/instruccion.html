@@ -75,7 +75,7 @@
         }
         
         function setVideo(){
-            fetch("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/"+num_paso_act+".mp4")
+            fetch("https://j0nan.github.io/PAT/Fase2/res/"+titulo+"/"+num_paso_act+".mp4")
             .then(response => {
                 if(!response.ok){
                     throw response;
@@ -115,8 +115,8 @@
             .catch(e => {
                 console.error("Error Leyendo pasos "+e);
                 if(intentado == 0){
-                    console.warn("Probando con ruta completa del archivo txt: https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt");
-                    leerPasos(encodeURI("https://j0nan.github.io/PAT/Practica3/res/"+titulo+"/pasos.txt"),1)
+                    console.warn("Probando con ruta completa del archivo txt: https://j0nan.github.io/PAT/Fase2/res/"+titulo+"/pasos.txt");
+                    leerPasos(encodeURI("https://j0nan.github.io/PAT/Fase2/res/"+titulo+"/pasos.txt"),1)
                 }
             });
         }
