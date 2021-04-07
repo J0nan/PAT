@@ -15,7 +15,7 @@ function cargar_apartados(ruta, intentado=0){
                 if(nombre_html==""||nombre_html.substr(-5)!=".html"){
                     console.error("Sintaxis del contenido erroneo en la linea: "+fila)
                 } else {
-                    a.setAttribute('href',encodeURI(`./src/${nombre_html}?titulo=${linea_separada[0]}`));
+                    a.setAttribute('href','./src/'+nombre_html+'?titulo='+linea_separada[0]);
                 }
             }
             
