@@ -1,4 +1,4 @@
-function cargar_apartados(ruta){
+function cargar_apartados(ruta, intentado=0){
     fetch(ruta)
     .then(response => response.text())
     .then(contenido => {
@@ -6,21 +6,33 @@ function cargar_apartados(ruta){
         const filas = contenido.split('\n');
         filas.forEach(fila => {
             let a = document.createElement("a");
-            fila = fila.replace(/[\r\n]+/gm, "" );
+            fila = fila.replace(/[\r\n]+/gm, "" ); //Contine tanto el titulo como el HTML si lo hubiera
+            linea_separada = fila.split('['); //Separamos el titulo con el HTML
+            if (linea_separada.length==1) {
+                a.setAttribute('href',encodeURI(`./src/instruccion.html?titulo=${linea_separada}&paso=1`));
+            } else {
+                nombre_html=linea_separada[1].substr(0,linea_separada[1].indexOf(']'))
+                if(nombre_html==""||nombre_html.substr(-5)!=".html"){
+                    console.error("Sintaxis del contenido erroneo en la linea: "+fila)
+                } else {
+                    a.setAttribute('href',encodeURI(`./src/${nombre_html}?titulo=${linea_separada[0]}`));
+                }
+            }
+            
             if(fila=="Collaborate"){
                 a.setAttribute('href',encodeURI(`./src/${fila}.html`));
-            } else {
-                a.setAttribute('href',encodeURI(`./src/instruccion.html?titulo=${fila}&paso=1`));
             }
             a.setAttribute('class',"list-group-item list-group-item-action");
-            a.textContent = fila
+            a.textContent = linea_separada[0]
             lista.appendChild(a)
-            console.log(fila)
+            // console.log(linea_separada[0])
         });
     })
     .catch(e => {
         console.error("Error "+e);
-        console.warn("Probando con ruta completa al archivo de contenido: https://j0nan.github.io/PAT/Practica3/res/contenido.txt");
-        cargar_apartados('https://j0nan.github.io/PAT/Fase2/res/contenido.txt')
+        if( intentado == 0){
+            console.warn("Probando con ruta completa al archivo de contenido: https://j0nan.github.io/PAT/Practica3/res/contenido.txt");
+            cargar_apartados('https://j0nan.github.io/PAT/Fase2/res/contenido.txt',1)
+        }
     });
 }
