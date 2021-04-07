@@ -1,0 +1,38 @@
+.logo-inicio{
+    width: 20%;
+    height: 20%;
+    min-width: 160px;
+    min-height: 100px;
+    margin: 1%;
+    padding-right: 5%;
+    margin-bottom: 2%;
+  }
+
+.titulo-inicio{
+    margin-top: 0em;
+    line-height: 1em;
+    padding-top: 1.75em;
+    font-size: 1.75ex;
+}
+
+a.list-group-item.list-group-item-action:hover{
+    background-color:#0d6efd;
+    color:white;
+}
+
+a.list-group-item.list-group-item-action:active{
+    background-color:#adb5bd;
+    color:black;
+}
+
+footer{
+    position: fixed;
+    bottom: 5px;
+    margin-left: 5px;
+    margin-right: auto;
+}
+  
+.pie-inicio{
+    color: black;
+    text-decoration-line: none;
+}

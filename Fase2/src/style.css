@@ -1,0 +1,81 @@
+img.logo-nav{
+    width: 64px;
+    margin-left: 6px;
+    margin-top: 0px;
+    margin-right: 4px;
+}
+
+p.titulo-inicio{
+    margin-top: 0em;
+    line-height: 1em;
+    padding-top: 1.75em;
+    font-size: 1.75ex;
+}
+  
+.titulo-nav{
+    margin-left: 20px;
+    padding-top: 0.5em;
+    color: black;
+}
+
+.titulo-nav:hover{
+    color: grey;
+}
+
+.navbar{
+    background-color: #adb5bd6e;
+}
+  
+div.titulo-instruccion{
+    text-align: center;
+    margin-top: 15px;
+}
+
+table.tabla-pasos{
+    text-align: center;
+    width: 70%;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagen-paso-vertical{
+    max-width: 120px;
+    min-width: 70px;
+    width: 100%;
+    padding-right: 15px;
+}
+
+.imagen-paso-horizontal{
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+    padding-right: 15px;
+}
+
+.texto-paso{
+    font-size: 1.5em;
+}
+
+a.btn-danger{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+p.card-text{
+    font-weight: normal;
+}
+
+a.card:hover{
+    filter: brightness(80%);
+}
+
+a.card{
+    text-decoration: none;
+}
+
+/* a.bg-warning{
+
+} */

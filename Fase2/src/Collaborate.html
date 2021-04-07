@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Collaborate</title>
+        <meta charset="utf-8">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-ligth">
+            <div class="container-fluid d-flex justify-content-start align-items-md-center">
+                <a class="navbar-brand nav-inicio" href="../index.html">
+                    <img src="../res/Logos/logo-comillas.png" class="d-inline-block align-top logo-nav">
+                    <div class="fw-bold d-inline-block text-uppercase titulo-nav">Asistente informático de IBS</div>
+                </a>
+            </div>
+        </nav>
+        <div class="titulo-instruccion">
+            <h1>Collaborate</h1>
+            <p class="lead">Últimas incidencias de Collaborate Europa:</p>
+        </div>
+        <table class="center" style="width: 50%;">
+            <tr>
+                <th>
+                    <div id="tabla-info">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
+    <script>
+      var sp = new StatusPage.page({ page : '19x8w5vjjtd5' });
+      sp.incidents({
+        success : function(data) {
+            console.log(data)
+            incidencias=data.incidents;
+            document.getElementById("tabla-info").innerHTML="";
+            incidencias.forEach(incidencia => {
+                tabla = document.getElementById("tabla-info")
+                if(incidencia.name.includes("Collaborate Ultra - AWS (EU)")){
+                    let div = document.createElement("a");
+                    if(incidencia.incident_updates[0].status=="resolved"){
+                        div.setAttribute('class','card mb-3 bg-success');
+                    } else if(incidencia.incident_updates[0].status=="identified"){
+                        div.setAttribute('class','card mb-3 bg-warning');
+                    } else if(incidencia.incident_updates[0].status=="operational"){
+                        div.setAttribute('class','card mb-3 bg-primary');
+                    } else if(incidencia.incident_updates[0].status=="investigating"){
+                        div.setAttribute('class','card mb-3 bg-danger');
+                    } else {
+                        div.setAttribute('class','card mb-3');
+                    }
+                    div.setAttribute('href',incidencia.shortlink);
+                    div.setAttribute('target','_blank')
+                    
+                    let html =  "<div class=\"card-body text-white\">"
+                    html += "<h4 class=\"card-title\">"+incidencia.name+"</h5>";
+                    html += "<p class=\"card-text\">"+incidencia.incident_updates[incidencia.incident_updates.length-1].body+"</p>";
+                    html += "<p class=\"card-text\"><small>"+"Estado: "+incidencia.incident_updates[0].status+"</small></p>";
+                    html += "</div>";
+                    div.innerHTML=html;
+                    tabla.appendChild(div);
+                }
+            });
+        }
+      });
+    </script>
+</html>
