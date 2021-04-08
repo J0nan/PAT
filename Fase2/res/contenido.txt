@@ -5,4 +5,5 @@ Test[Test.htlm
 Test2[]
 Test3[Test]
 Test4[Test
-Test de parametros[instruccion.html]
+Test de parametros[instruccion.html]=>titulo=Altavoz&host=%computername%
+Test de parametros2[distincionHostName.html]=>titulo=Altavoz&host=%computername%
