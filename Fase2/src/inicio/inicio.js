@@ -15,12 +15,15 @@ function cargar_apartados(ruta, intentado=0){
                 if(nombre_html==""||nombre_html.substr(-5)!=".html"){
                     console.error("Sintaxis del contenido erroneo en la linea: "+fila)
                 } else {
-                    a.setAttribute('href',encodeURI(`./src/${nombre_html}?titulo=${linea_separada[0]}`));
+                    parametros=linea_separada[1].split('<=')[1];
+                    if (parametros!=undefined) {
+                        //Hay parametros
+                        a.setAttribute('href',encodeURI(`./src/${nombre_html}?${parametros}`));
+                    } else {
+                        a.setAttribute('href',encodeURI(`./src/${nombre_html}?titulo=${linea_separada[0]}`));
+                    }
+                    console.log(parametros)
                 }
-            }
-            
-            if(fila=="Collaborate"){
-                a.setAttribute('href',encodeURI(`./src/${fila}.html`));
             }
             a.setAttribute('class',"list-group-item list-group-item-action");
             a.textContent = linea_separada[0]
