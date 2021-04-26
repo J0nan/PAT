@@ -16,8 +16,28 @@ function cargar_apartados(ruta, intentado=0){
                     console.error("Sintaxis del contenido erroneo en la linea: "+fila)
                 } else {
                     parametros=linea_separada[1].split('<=')[1];
+                    var href_parametros;
                     if (parametros!=undefined) {
                         //Hay parametros
+                        var sURLVariables = parametros.split('&');
+                        for(var i = 0; i<sURLVariables.length; i++){
+                            var sParameterName = sURLVariables[i].split('=');
+                            if(sParameterName[1][0]=='{'){
+                                if (i==0) {
+                                    href_parametros = sParameterName[0];
+                                } else {
+                                    href_parametros += sURLVariables[i];
+                                }
+                                href_parametros += '=';
+                                href_parametros += sParameterName[1];
+                            } else {
+                                if (i==0) {
+                                    href_parametros = sURLVariables[i];
+                                } else {
+                                    href_parametros += sURLVariables[i];
+                                }
+                            }
+                        }
                         a.setAttribute('href',encodeURI(`./src/${nombre_html}?${parametros}`));
                     } else {
                         a.setAttribute('href',encodeURI(`./src/${nombre_html}?titulo=${linea_separada[0]}`));
