@@ -34,4 +34,8 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 				user.getPassword(),
 				List.of((GrantedAuthority) () -> "USER"));
 	}
+	
+	public int changePassword(String username, String newPassword) {
+		return userDetailRepository.updatePasswordByUserName(username, passwordEncoder.encode(newPassword));
+	}
 }
