@@ -51,7 +51,7 @@ public class UserControllerE2ETest {
 
 	@Transactional
 	@Test
-	//@Sql(scripts= "/data.sql") //to created DB tables and init sample DB data
+	// @Sql(scripts= "/schema.sql") //to created DB tables and init sample DB data
 	public void given_app_when_call_change_password_then_ok() {
 
 		//Given

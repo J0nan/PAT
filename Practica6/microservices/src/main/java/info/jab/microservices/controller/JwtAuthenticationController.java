@@ -48,7 +48,7 @@ public class JwtAuthenticationController {
 		return ResponseEntity.ok().body(new JwtResponse(token));
 	}
 
-	@PostMapping("/api/change-password")
+	@PostMapping("/api/users/update-password")
     public ResponseEntity<String> changePassword(@Valid @RequestBody UserChangePasswordRequest userCPR, @RequestHeader("Authorization") String tokenHeader) {
         String username = null;
         String jwtToken = null;
@@ -65,10 +65,10 @@ public class JwtAuthenticationController {
 				}
 				
             } else {
-				return new ResponseEntity<>("PASSWORD_NOT_MATCH", HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}
-        return new ResponseEntity<>("PASSWORD_CHANGED", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 	private void authenticate(String username, String password) throws Exception {
