@@ -5,7 +5,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var form = document.getElementById("myform");
     form.addEventListener("submit", function(e) {
         e.preventDefault();
-        return sendForm();
+        if(checkNewPasswords()){
+            return sendForm();
+        } else {
+            alert("Contraseñas no coinciden")
+            document.getElementById("current_password").style="border: 1px solid black"
+            document.getElementById("new_password1").style="border: 3px solid red"
+            document.getElementById("new_password2").style="border: 3px solid red"
+        }
     });
 });
 
@@ -55,4 +62,12 @@ function sendForm() {
         console.error(err.message);
     }
     return false;
+}
+
+function checkNewPasswords(){
+    if (document.getElementById("new_password1").value==document.getElementById("new_password2").value) {
+        return true;
+    } else {
+        return false;
+    }
 }
